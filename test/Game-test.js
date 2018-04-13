@@ -132,6 +132,12 @@ describe('<Game />', function () {
   it('should set current `this.state.turn` on `board[3]` when clicking on 3rd field', function () {
     const wrapper = shallow(<Game />);
     const ev = { preventDefault: sinon.stub() };
+
+    wrapper.find('.game__reset').simulate('click', {
+      preventDefault: sinon.stub()
+    });
+
+
     wrapper.find(Board).prop('onClick').call(null, 3, ev);
     expect(wrapper.state('board')).toEqual([
       null, null, null,
